@@ -1,44 +1,49 @@
 import React from "react";
+import ChildComponent from "./ChildComponent";
 
 class MyComponent extends React.Component {
 
     state = {
-        name: `KimHajin`,
-        channel: `Nguyễn Trọng Ngọc`
+        firstName: ``,
+        lastName: ``
     }
-    //realtime state
-    handleOnChangeName = (event) => {
+
+    handleChangeFirstName = (event) => {
         this.setState({
-            name: event.target.value,
-            channel: event.target.value
+            firstName: event.target.value
         })
     }
 
-    handleClickButton = () => {
-        alert(`Click Me`);
+    handleChangeLastName = (event) => {
+        this.setState({
+            lastName: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(`Check data results: `, this.state)
     }
 
     render() {
-
-        let name = `Andkaha`;
+        // console.log(`call back: `, this.state)
 
         return (
             <React.Fragment>
-                <div className="enterName">
-                    <input value={this.state.name} type='text'
-                        onChange={(event) => this.handleOnChangeName(event)} />
-                </div>
-                <div className="firstClass">
-                    {console.log(`My name is: `, name)}
-                    Hello from {this.state.name}!
-                </div>
-                <div className="secondClass">
-                    My Youtube channel {this.state[`channel`]}
-                </div>
-                <div className="thirdClass">
-                    <button onClick={() => { this.handleClickButton() }}>Click Me</button>
-                </div>
+                <form action="/action_page.php">
+                    <label htmlFor="fname">First name:</label><br />
+                    <input onChange={(event) => this.handleChangeFirstName(event)}
+                        type="text" value={this.state.firstName} /><br />
+                    <label htmlFor="lname">Last name:</label><br />
+                    <input onChange={(event) => this.handleChangeLastName(event)}
+                        type="text" value={this.state.lastName} /><br /><br />
+                    <input onClick={(event) => this.handleSubmit(event)}
+                        type="submit" />
+                </form>
 
+                <ChildComponent name={`Child one`}></ChildComponent>
+                <ChildComponent name={`Child two`}></ChildComponent>
+                <ChildComponent name={`Child three`}></ChildComponent>
             </React.Fragment>
         )
     }
