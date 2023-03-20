@@ -9,8 +9,13 @@ class MyComponent extends React.Component {
     //realtime state
     handleOnChangeName = (event) => {
         this.setState({
-            name: event.target.value
+            name: event.target.value,
+            channel: event.target.value
         })
+    }
+
+    handleClickButton = () => {
+        alert(`Click Me`);
     }
 
     render() {
@@ -29,6 +34,9 @@ class MyComponent extends React.Component {
                 </div>
                 <div className="secondClass">
                     My Youtube channel {this.state[`channel`]}
+                </div>
+                <div className="thirdClass">
+                    <button onClick={() => { this.handleClickButton() }}>Click Me</button>
                 </div>
 
             </React.Fragment>
