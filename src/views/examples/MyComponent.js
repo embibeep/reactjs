@@ -1,11 +1,11 @@
 import React from "react";
 import ChildComponent from "./ChildComponent";
+import AddComponent from "./AddComponents";
 
 class MyComponent extends React.Component {
 
     state = {
-        firstName: ``,
-        lastName: ``,
+
         arrJob: [
             {
                 iD: `abcJob1`,
@@ -25,21 +25,13 @@ class MyComponent extends React.Component {
         ]
     }
 
-    handleChangeFirstName = (event) => {
-        this.setState({
-            firstName: event.target.value
-        })
-    }
 
-    handleChangeLastName = (event) => {
-        this.setState({
-            lastName: event.target.value
-        })
-    }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        console.log(`Check data results: `, this.state)
+    addNewJob = (job) => {
+        console.log(`check job from parents: `, job)
+        this.setState({
+            arrJob: [...this.state.arrJob, job]
+        })
     }
 
     render() {
@@ -47,21 +39,12 @@ class MyComponent extends React.Component {
 
         return (
             <React.Fragment>
-                <form action="/action_page.php">
-                    <label htmlFor="fname">First name:</label><br />
-                    <input onChange={(event) => this.handleChangeFirstName(event)}
-                        type="text" value={this.state.firstName} /><br />
-                    <label htmlFor="lname">Last name:</label><br />
-                    <input onChange={(event) => this.handleChangeLastName(event)}
-                        type="text" value={this.state.lastName} /><br /><br />
-                    <input onClick={(event) => this.handleSubmit(event)}
-                        type="submit" />
-                </form>
+                <AddComponent addNewJob={this.addNewJob}>
+
+                </AddComponent>
+
 
                 <ChildComponent
-                    name={this.state.firstName}
-                    age={`21`}
-                    address={`DongNai`}
                     arrJob={this.state.arrJob}
                 >
 

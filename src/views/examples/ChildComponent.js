@@ -2,27 +2,58 @@ import React from "react";
 
 class ChildComponent extends React.Component {
 
+    state = {
+        showJobs: false
+    }
+
+    handleShowHide = () => {
+        this.setState({
+            showJobs: !this.state.showJobs
+        })
+    }
+
     render() {
-        console.log(`check pros: `, this.props)
+        // console.log(`check pros: `, this.props)
         // let name = this.props.name;
         // let age = this.props.age;
         // let address = this.props.address;
 
         //cú pháp object
         let { arrJob } = this.props;
+        let { showJobs } = this.state;
+        // let check = showJobs === true ? `showJobs = true` : `showJobs = false`;
+        // console.log(`check conditional: `, check);
         return (
             <React.Fragment>
-                <div className="Job-lists">
-                    {
-                        arrJob.map((item, index) => {
-                            return (
-                                <div key={item.id}>
-                                    {item.title} - {item.salary}
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+
+                {showJobs === false ?
+                    <div>
+                        <button onClick={() => this.handleShowHide()}>Show</button>
+                    </div>
+                    :
+                    <>
+                        <div className="Job-lists">
+                            {
+                                arrJob.map((item, index) => {
+                                    if (+item.salary >= 500) {
+                                        return (
+                                            <div key={item.iD}>
+                                                {item.title} - {item.salary}
+                                            </div>
+
+
+                                        )
+                                    }
+                                })
+                            }
+                        </div>
+
+                        <div>
+                            <button onClick={() => this.handleShowHide()}>Hide</button>
+                        </div>
+                    </>
+                }
+
 
             </React.Fragment>
         )
