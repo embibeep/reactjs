@@ -34,6 +34,15 @@ class MyComponent extends React.Component {
         })
     }
 
+    deleteAJob = (job) => {
+        let currentJobs = this.state.arrJob;
+        //lọc object theo id, nếu id không trùng với id chỉ định, in chúng ra.
+        currentJobs = currentJobs.filter(item => item.iD !== job.iD)
+        this.setState({
+            arrJob: currentJobs
+        })
+    }
+
     render() {
         // console.log(`call back: `, this.state)
 
@@ -46,6 +55,7 @@ class MyComponent extends React.Component {
 
                 <ChildComponent
                     arrJob={this.state.arrJob}
+                    deleteAJob={this.deleteAJob}
                 >
 
                 </ChildComponent>
