@@ -43,8 +43,16 @@ class MyComponent extends React.Component {
         })
     }
 
+    componentDidMount() {
+        console.log(`Run Component`)
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(`Run Didupdate: `, `Prev state: `, prevState, `Current state: `, this.state)
+    }
+
     render() {
-        // console.log(`call back: `, this.state)
+        console.log(`call back: `, this.state)
 
         return (
             <React.Fragment>
