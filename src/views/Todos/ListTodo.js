@@ -91,50 +91,55 @@ class ListTodo extends React.Component {
 
 
         return (
-            <div className="list-todo-container">
-                <AddTodo
-                    addNewTodo={this.addNewTodo}
-                />
+            <Fragment>
+                <p>
+                    This is a Todo App
+                </p>
+                <div className="list-todo-container">
+                    <AddTodo
+                        addNewTodo={this.addNewTodo}
+                    />
 
-                <div className="list-todo-content">
-                    {ListTodo && ListTodo.length > 0 &&
-                        ListTodo.map((item, index) => {
-                            return (
-                                <div className="Todo-child" key={item.id}>
-                                    {isEmtpyObj === true ?
-                                        <span> {index + 1} - {item.title} </span>
-                                        :
-                                        <Fragment>
-                                            {editTodo.id === item.id ?
-                                                <span>
-                                                    {index + 1} - <input value={editTodo.title}
-                                                        onChange={(event) => this.handleOnChangeEditTodo(event)}></input>
-                                                </span>
-                                                :
-                                                <span>
-                                                    {index + 1} - {item.title}
-                                                </span>
-                                            }
-                                        </Fragment>
-                                    }
-                                    <button className="btnEdit"
-                                        onClick={() => this.handleEditTodo(item)}>
-                                        {isEmtpyObj === false && editTodo.id === item.id ?
-                                            `Save` : `Edit`}
-                                    </button>
-                                    <button className="btnDelete"
-                                        onClick={() => this.handleDeleteTodo(item)}>Delete</button>
-                                </div>
+                    <div className="list-todo-content">
+                        {ListTodo && ListTodo.length > 0 &&
+                            ListTodo.map((item, index) => {
+                                return (
+                                    <div className="Todo-child" key={item.id}>
+                                        {isEmtpyObj === true ?
+                                            <span> {index + 1} - {item.title} </span>
+                                            :
+                                            <Fragment>
+                                                {editTodo.id === item.id ?
+                                                    <span>
+                                                        {index + 1} - <input value={editTodo.title}
+                                                            onChange={(event) => this.handleOnChangeEditTodo(event)}></input>
+                                                    </span>
+                                                    :
+                                                    <span>
+                                                        {index + 1} - {item.title}
+                                                    </span>
+                                                }
+                                            </Fragment>
+                                        }
+                                        <button className="btnEdit"
+                                            onClick={() => this.handleEditTodo(item)}>
+                                            {isEmtpyObj === false && editTodo.id === item.id ?
+                                                `Save` : `Edit`}
+                                        </button>
+                                        <button className="btnDelete"
+                                            onClick={() => this.handleDeleteTodo(item)}>Delete</button>
+                                    </div>
+                                )
+
+                            }
                             )
-
                         }
-                        )
-                    }
 
 
 
+                    </div>
                 </div>
-            </div>
+            </Fragment>
         )
     }
 }

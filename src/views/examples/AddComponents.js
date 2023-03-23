@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 class AddComponent extends React.Component {
 
@@ -22,7 +23,7 @@ class AddComponent extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         if (!this.state.title || !this.state.salary) {
-            alert(`Nhập đầy đủ dữ liệu!`)
+            toast.error(`Nhập đầy đủ dữ liệu!`)
             return;
         }
         console.log(`Check data results: `, this.state)
@@ -37,6 +38,7 @@ class AddComponent extends React.Component {
             title: ``,
             salary: ``
         })
+        toast.success(`Nhập thành công!`)
     }
 
     render() {
