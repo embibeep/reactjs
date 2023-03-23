@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import AddTodo from "./AddTodo";
 import "./listTodo.scss";
 import { toast } from 'react-toastify';
+import Color from "../HOC/Color";
 class ListTodo extends React.Component {
 
     state = {
@@ -144,4 +145,5 @@ class ListTodo extends React.Component {
     }
 }
 
+// export default Color(ListTodo);
 export default ListTodo;
